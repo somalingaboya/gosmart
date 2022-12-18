@@ -1,0 +1,30 @@
+eureka:
+  client:
+    instance:
+      preferIpAddress: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+server:
+  port: 8569
+spring:
+  application:
+    name: gosmart
+    
+  mvc:
+    view:
+      prefix: /WEB-INF/pages/
+      suffix: .jsp
+  
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    password: root
+    url: jdbc:mysql://localhost:3306/gosmart_db
+    username: root
+  jpa:
+    database-platfrom: org.hibernate.dialect.MySQL5Dialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        genarate_statistics: true
