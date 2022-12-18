@@ -46,7 +46,7 @@ public class UserContactController
 		}
 	}
 	
-	@GetMapping("usercontact/{id}")
+	@GetMapping("user/contact/{id}")
 	public ResponseEntity<UserContactDetailsEntity> getUserContact(@PathVariable Integer userContactId)
 	{
 		log.info("In UserContactController... GetUserContact() Method Started");
