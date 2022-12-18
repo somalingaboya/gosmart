@@ -47,7 +47,7 @@ public class UserContactController
 	}
 	
 	@GetMapping("usercontact/{id}")
-	public ResponseEntity<UserContactDetailsEntity> getProperty(@PathVariable Integer userContactId)
+	public ResponseEntity<UserContactDetailsEntity> getUserContact(@PathVariable Integer userContactId)
 	{
 		log.info("In UserContactController... GetUserContact() Method Started");
 

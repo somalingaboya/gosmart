@@ -1,12 +1,14 @@
 package com.gosmart.controller;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -47,5 +49,15 @@ public class UserContactControllerTest
 		ResponseEntity<Integer> response=controller.insertUserContact(userContactDetailsEntity);
 		
 		assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+	}
+	
+	@Test
+	public void testgetUserContact() throws Exception
+	{
+		UserContactDetailsEntity userContactDetailsEntity=mock(UserContactDetailsEntity.class);
+		when(service.getUserContact(Mockito.any())).thenReturn(userContactDetailsEntity);
+		
+		ResponseEntity<UserContactDetailsEntity> response=controller.getUserContact(2);
+		assertEquals(HttpStatus.CREATED, response.getStatusCode());
 	}
 }

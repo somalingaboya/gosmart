@@ -53,10 +53,24 @@ public class UserContactServiceImplTest
 	}
 	
 	@Test
-	public void testGetUserContact() throws Exception
+	public void testGetUserContact_() throws Exception
 	{
 		UserContactDetailsEntity userContactDetailsEntity=Mockito.mock(UserContactDetailsEntity.class);
 		
-		when(repository.findById(Mockito.any())).thenReturn();
+		when(repository.findById(Mockito.any())).thenReturn(Optional.of(userContactDetailsEntity));
+		
+		UserContactDetailsEntity userContactDetailsEntity2=service.getUserContact(1);
+		assertNotNull(userContactDetailsEntity2);
+	}
+	
+	@Test(expected=Exception.class)
+	public void testGetUserContact_Exception() throws Exception
+	{
+		UserContactDetailsEntity userContactDetailsEntity=Mockito.mock(UserContactDetailsEntity.class);
+		
+		when(repository.findById(Mockito.any())).thenThrow(NullPointerException.class);
+		
+		UserContactDetailsEntity userContactDetailsEntity2=service.getUserContact(1);
+		assertNotNull(userContactDetailsEntity2);
 	}
 }
