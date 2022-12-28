@@ -72,12 +72,13 @@ public class UserContactDetailsEntity
 	@Column(name="CREATED_ON")
 	private Date createdOn;
 	
+	//Name Of The updatedBy
+	@Column(name="UPDATED_BY")
+	private Integer updatedBy;
+
 	
 	//Name Of The CreatedBy
 	@Column(name="CREATED_BY")
 	private Integer createdBy;
 	
-	
-	
-
 }

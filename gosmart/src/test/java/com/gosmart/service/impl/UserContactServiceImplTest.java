@@ -53,24 +53,34 @@ public class UserContactServiceImplTest
 	}
 	
 	@Test
-	public void testGetUserContact_() throws Exception
+	public void testGetUserContact() throws Exception
 	{
-		UserContactDetailsEntity userContactDetailsEntity=Mockito.mock(UserContactDetailsEntity.class);
+		Integer userContactId=1;
+
+		UserContactDetailsEntity userContactDetailsEntity=new UserContactDetailsEntity();
+		UserContactDetailsEntity userContactDetailsEntity2=Mockito.mock(UserContactDetailsEntity.class);
+
 		
-		when(repository.findById(Mockito.any())).thenReturn(Optional.of(userContactDetailsEntity));
+		when(repository.findById(userContactId)).thenReturn(Optional.of(userContactDetailsEntity2));
 		
-		UserContactDetailsEntity userContactDetailsEntity2=service.getUserContact(1);
-		assertNotNull(userContactDetailsEntity2);
+		userContactDetailsEntity=service.getUserContact(userContactId);
+		
+		
+		
 	}
 	
 	@Test(expected=Exception.class)
 	public void testGetUserContact_Exception() throws Exception
 	{
-		UserContactDetailsEntity userContactDetailsEntity=Mockito.mock(UserContactDetailsEntity.class);
+		Integer userContactId=1;
+
+		UserContactDetailsEntity userContactDetailsEntity=new UserContactDetailsEntity();
+		UserContactDetailsEntity userContactDetailsEntity2=Mockito.mock(UserContactDetailsEntity.class);
+
 		
-		when(repository.findById(Mockito.any())).thenThrow(NullPointerException.class);
+		when(repository.findById(userContactId)).thenThrow(NullPointerException.class);
 		
-		UserContactDetailsEntity userContactDetailsEntity2=service.getUserContact(1);
-		assertNotNull(userContactDetailsEntity2);
+		userContactDetailsEntity=service.getUserContact(userContactId);
+		
 	}
 }

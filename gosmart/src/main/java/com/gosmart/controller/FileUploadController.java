@@ -34,7 +34,6 @@ public class FileUploadController
 			return new ResponseEntity<>(fileUploadResponse, HttpStatus.OK);
 			
 			
-			
 		} 
 		catch (Exception e)
 		{

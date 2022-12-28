@@ -54,10 +54,21 @@ public class UserContactControllerTest
 	@Test
 	public void testgetUserContact() throws Exception
 	{
-		UserContactDetailsEntity userContactDetailsEntity=mock(UserContactDetailsEntity.class);
-		when(service.getUserContact(Mockito.any())).thenReturn(userContactDetailsEntity);
+		Integer userContactId=1;
+		UserContactDetailsEntity userContactDetailsEntity=new UserContactDetailsEntity();
+		when(service.getUserContact(userContactId)).thenReturn(userContactDetailsEntity);
 		
 		ResponseEntity<UserContactDetailsEntity> response=controller.getUserContact(2);
-		assertEquals(HttpStatus.CREATED, response.getStatusCode());
+		assertEquals(HttpStatus.OK, response.getStatusCode());
+	}
+	@Test
+	public void testgetUserContact_Exception() throws Exception
+	{
+		Integer userContactId=1;
+		UserContactDetailsEntity userContactDetailsEntity=new UserContactDetailsEntity();
+		when(service.getUserContact(userContactId)).thenThrow(NullPointerException.class);
+		
+		ResponseEntity<UserContactDetailsEntity> response=controller.getUserContact(2);
+		assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
 	}
 }

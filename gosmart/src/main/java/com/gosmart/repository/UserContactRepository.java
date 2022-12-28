@@ -7,5 +7,5 @@ import com.gosmart.repository.entity.UserContactDetailsEntity;
 @Repository
 public interface UserContactRepository extends JpaRepository<UserContactDetailsEntity, Integer> 
 {
-
+	
 }
